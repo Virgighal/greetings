@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Jessica</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #header {
+            background: linear-gradient(90deg, #FFD700, #FF6347);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Quicksand', sans-serif;
+            width: 100%;
+        }
+
+        #footer {
+            background: linear-gradient(90deg, #FFD700, #FF6347);
+            text-align: center;
+            padding: 5px;
+            color: #fff;
+            font-size: 0.9rem;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        #main-container {
+            display: flex;
+            flex: 1;
+        }
+
+        #sidebar {
+            background-color: #ffffff;
+            color: #050505;
+            width: 250px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        #greetings-container {
+            background-color: #f0f2f5;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+            width: 100%;
+            overflow: auto;
+            max-height: 80vh;
+            margin-top: 20px;
+            padding: 20px;
+            flex: 1;
+        }
+
+        #status-box {
+            background-color: #ffffff;
+            border: 1px solid #dddfe2;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        #status-box textarea {
+            width: 100%;
+            border: none;
+            resize: none;
+            overflow: hidden;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .post-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .post-card {
+            background-color: #ffffff;
+            border: 1px solid #dddfe2;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .post-message {
+            color: #050505;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .react-icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #dddfe2;
+            color: #606770;
+        }
+
+        .react-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .react-icon img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .react-icon:hover {
+            color: #1877f2;
+        }
+
+        /* Hamburger Icon */
+        .hamburger-icon {
+            cursor: pointer;
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .hamburger-icon span {
+            background-color: #050505;
+            display: block;
+            height: 2px;
+            margin-bottom: 6px;
+            width: 30px;
+        }
+
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+            #sidebar {
+                transform: translateX(-250px);
+            }
+
+            #main-container {
+                flex-direction: column;
+            }
+
+            #greetings-container {
+                border-radius: 0;
+            }
+
+            .hamburger-icon {
+                display: block;
+            }
+
+            #sidebar.mobile-open {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="header">
+    Heartfelt Wishes for Jessica 🎉💖
+</div>
+
+<div id="main-container">
+    <!-- Greetings Container -->
+    <div id="greetings-container" class="mx-auto">
+        <!-- Status Box -->
+        <div id="status-box" class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/40" alt="User Avatar" class="mr-2 rounded-full">
+                <textarea placeholder="What's on your mind?" class="w-full focus:outline-none"></textarea>
+            </div>
+            <div class="flex justify-between mt-4">
+                <div class="flex items-center">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/image.png" alt="Image Icon" class="mr-2">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/video.png" alt="Video Icon" class="mr-2">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/smiling.png" alt="Emoji Icon">
+                </div>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-full focus:outline-none" id="post-button">Post</button>
+            </div>
+        </div>
+
+        <!-- Post Container -->
+        <div class="post-container" id="post-container">
+            <!-- Posts will be dynamically added here using JavaScript -->
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    &copy; 2024 All Rights Reserved
+</div>
+
+<script>
+    function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+        const greetingsContainer = document.getElementById('greetings-container');
+        const isOpen = sidebar.classList.contains('mobile-open');
+
+        // Use transition for smooth animation
+        sidebar.style.transition = 'transform 0.5s ease-in-out';
+        greetingsContainer.style.transition = 'margin-left 0.5s';
+
+        if (isOpen) {
+            // Hide sidebar with animation
+            sidebar.style.transform = 'translateX(-250px)';
+            greetingsContainer.style.marginLeft = '0';
+        } else {
+            // Show sidebar with animation
+            sidebar.style.transform = 'translateX(0)';
+            greetingsContainer.style.marginLeft = '250px';
+        }
+
+        // Toggle mobile-open class
+        sidebar.classList.toggle('mobile-open');
+    }
+
+    // Example data
+    const posts = [
+        { name: 'Papa & Mama', likes: 0, isLiked: false, post: "Selalu sehat,dilancarkan rezekinya & jd anak yg soleha 😁"},
+        { name: 'Veron', likes: 0, isLiked: false, post: "belikanlah dominos pizza"},
+        { name: 'Nia', likes: 0, isLiked: false, post: 'Happy birthday, Jesss!!! Selamat merayakan 25 tahun ada di dunia AHAHAHHAAHAA. Den tau ang benci ulang tahun dan bertambah tua, tapi namanya juga hidup jadi kita harus pasrah ya, sahabat 😊. Semoga tahun ini semua yang ang harapkan dan rencanakan bisa terkabul. Semoga selalu dikelilingi hal-hal baik dan selalu menemukan kebahagiaan di manapun berada.  Juga, semoga semakin bertambah usia juga semakin dewasa, baik dan please tetap ceria. Ditunggu juga kabar baik dengan Virgi-nya ya, Jes 🤣 \n Ps: tolong doakan Nia 2024 tidak lagi jomblo ya, sahabatq' },
+        { name: 'Girlane',likes: 0, isLiked: false,  post: 'Happy birthday, jes. Sorry yo jes den ndak bisa buek vidio. Den masih di bali trus den masuk igd tadi. Sananyo den masih terkapar. Masih recovery. A yo wish den? Masih agak2 halu den ko a. Semoga semua rencana, urusan, harapan, pekerjaan, lingkungan ang di 2024, usia baru ang ko Tuhan yang lancarkan. Tuhan yang permudah. Semua kebutuhan ang Tuhan yang cukupkan. Semoga ang bisa selalu jadi orang yang dapat melihat segala sesuatu dari hal2 yang baik. Semoga senantiasa dilindungi dan dikelilingi orang2 baik. Apapun yang ang doakan, harapkan, semoga satu persatu didekatkan Tuhan. Itu sih paling dari den jes ahhaahhaha. Dada, jes. Happy birthdayyy!!' },
+        { name: 'Naila', likes: 0, isLiked: false, post: 'Hi birthday girl jess!! First thing i hv to say is thankyou so much for being my friend in this tiny little world, but u always make it bigger wkwk. god always bless you, semoga apa yg jadi tujuan baik lu bisa terwujud, lebih happy lagi, always feeling blessed. Amin ✨'},
+        { name: 'Kenza',likes: 0, isLiked: false, post: 'Happyy birthday pecinta nanami, wishing you all the best and a long life! 🎉🎉'},
+        { name: 'Kenita', likes: 0, isLiked: false, post: 'Dear bu jess, happy happy happy birthdaaayyyy !! 🎉🥳semoga tahun ini banyak impian yg tercapai, semoga selalu sehat, dan tambah bahagia ❤️❤️ always be happy yaaa ^_^'},
+        { name: 'Rakan', likes: 0, isLiked: false, post: 'HAPPY BIRTHDAY BU JESSICA. Semoga sehat selalu, panjang umur, rejekinnya makin berlimpah, makin lancar sama virgii dan bisa semakin keren selalu!!! AMIN AMIN AMIN!!! '},
+        { name: 'Kevin Ops', likes: 0, isLiked: false, post: "Happiest Birthday Jess! 🎉 Big ups to you on your special day, fam. You're like the real MVP in this crew, keepin' it lit. May your year be mad dope, filled with good vibes, and may all your goals drop like beats. Cheers to another trip around the sun! 🥳"},
+        { name: 'Laila', likes: 0, isLiked: false, post: "happy birthday bu jes, akhirnya turning to 25. semoga sehat sehat, bahagia selalu, berkah umurnya and this special day brings you all that your heart truly desires!"},
+        { name: 'Chintya', likes: 0, isLiked: false, post: "Selamat ulang tahun Ibu Jesicca, semoga usia barunya diberi keberkahan. Diberi kelapangan dada untuk segala kesulitan, semoga juga senantiasa diberi kebahagiaan.” “Terima kasih Ibu sudah selalu sehat🙌🙌"},
+        { name: 'Christian', likes: 0, isLiked: false, post: "Happy Birthday Jess! Semoga panjang umur, sehat selalu, dan segala harapanmu cepat terwujud. Semoga semakin langgeng (pasangan dan kerjaan wkwk), ditunggu traktiran nya di bulan April"},
+        { name: 'Reggy', likes: 0, isLiked: false, post: "Happy birthday, Capricorn Queen! May your day be filled with joy, laughter, and all the love you deserve. Here's to another year of shared smiles and cherised moments. Let's welcoming our capricorn season 🥂🎉"},
+        { name: 'Algi', likes: 0, isLiked: false, post: "Selamat ulang tahun Jess, semoga selalu diberi kesehatan dan rezeki nya semakin berlimpah. Semoga selalu di penuhi kebahagiaan dan juga keberkahan, dan semoga cepat kirim undangan hehe"},
+        { name: 'Dicky', likes: 0, isLiked: false, post: "buat bu jes, selamat ulang tahun ya bu, panjang umur sehat selalu selalu bahagia sama apa yang dijalanin. semoga juga kerjaannya makin lancar makin bisa handle banyak project dan juga semoga banyak goals goals yang tercapai di tahun ini dan tahun tahun berikutnya. ga lupa juga semoga langgeng sama bang virgi sampe ke jenjang yang lebih serius hahaha. once again happy birthday bu jes🥳🥳"},
+        { name: 'Alfi', likes: 0, isLiked: false, post: "Halo Jessica, Selamat Tahun baru dan juga Selamat Ulang Tahun. Wish you well in all you do."},
+        { name: 'Pras', likes: 0, isLiked: false, post: "Happy Birthday Jess 🥳🥳panjang umur, sehat selalu dan  selalu banyak rejekinya , pokoknya doa doa yang terbaik buat lu 🥳🥳Wish u all the best love you king virgi 😘😘"},
+        { name: 'Dhuha', likes: 0, isLiked: false, post: "Happy birthday yang ke-25 bu Jessica, semoga sehat selalu, lancar rejekinya, dimudahkan segala urusannya, serta mulia dunia dan akhirat. Panjang umur perjuangan🌻🌻🌻"},
+        { name: 'Indika', likes: 0, isLiked: false, post: "HBD Jess, smoga sehat selalu, panjang umur, dimudahkan dalam segala urusan, semoga cepet samawa yaa sama virgii, wish you all the best yaa jess ."},
+        { name: 'Nacul', likes: 0, isLiked: false, post: "Happy Brojol Day Jess🥳 Semoga dengan bertambahnya umur lu, lu bisa lebih bijak lagi dalam urusan pekerjaan dan hubungan lu mau itu dengan pasangan lu atau dengan keluarga lu dan keluarganya pasangan lu juga, semoga diberikan kesehatan dan keselamatan selalu dan dipermudah segala urusan lu, lu sebagai perempuan gua rasa wajib mendukung pasangan lu (virgi). karna gua mikir kek anjir misalnya cewe kalau udh jenuh bgt kerja dia nanti pas nikah bisa memutuskan untuk tidak kerja dan bisa mengandalkan suaminya, sedangnya suami memang sudah di takdirkan untuk memberikan nafkah kepada keluarganya. ketika lu ada masalah sama virgi gua harap lu berdua jgn ngikutin emosional kalau dalam menyelesaikan masalah, lebih rasional lgi dalam berfikir apa lgi nanti kalau udh nikah, intinya komunikasi lu berdua jgn miss aja. agama islam lengkap bgt untuk menjadi panduan berumah tangga. itu aja sih dari gue, sama ini gua juga ga masalah mau lu anggep gua nyebelin atau lu anggap musuh lu juga wkwkwkwk itu hak lu, yg pasti setiap orang² memiliki pandangan yg berbeda terhadap gua jess dan gua tidak mempermasalahkan itu mau buruk mau baik i don't care about it. yg terakhir mungkin semoga rencana lu sama virgi di permudah untuk kedepannya, jgn boros² kalau makan berdua lu mending di tabung uangnya buat kedepannya, belajar masak jess nanti gua adu masakan lu sama gue hahahahaha🙏🏼🥳"},
+        { name: 'Ziyad', likes: 0, isLiked: false, post: "Selamat ulang tahun yang ke 25 Bu Jessica 🎉, Semoga menjadi pribadi yang lebih baik, mendapatkan keberkahan dari Allah SWT, di beri kesehatan, dilimpahkan rezekinya, diberi keselamatan dunia dan akhirat dan semoga segala yang dicita - citakan dapat terwujud."},
+        { name: 'Telaga', likes: 0, isLiked: false, post: "Selamat ulang tahunn bujeess🥳🥳🥳, semoga sehat dan sukses selaluu, dimudahkan segala urusann, dan tersemogakan segala yang disemogakan"},
+        { name: 'Albert', likes: 0, isLiked: false, post: "Happy birthday jessica, all the best wishes for you"},
+        { name: 'Rengga', likes: 0, isLiked: false, post: "Selamat ulang tahun jess semoga panjang umur dan sehat selalu serta diberikan keberkahan umur. Semoga selalu dalam lindungan Allah dan bahagia dunia akhirat. Semoga bisa melewati quarter life crisis, semoga segala urusannya dipermudah aamiin! 😇"},
+        { name: 'Akmal', likes: 0, isLiked: false, post: "Barakallah fii umrik buu jess, Semoga tambah suksess, diberikan nikmat kesehatan selalu, panjang umur, berlimpah rezeki, selalu diberikan kebahagiaan, semua yang diimpikan tercapaii, semoga hari-hari dipenuhi kebaikan dan dikelilingi selalu dengan orang-orang yang menyayangi buu aamiin"},
+    ];
+
+    // Function to create post elements
+    function createPostElement(post, index) {
+        const postCard = document.createElement('div');
+        postCard.className = 'post-card';
+
+        const userInfo = document.createElement('div');
+        userInfo.className = 'user-info';
+
+        const userAvatar = document.createElement('img');
+        userAvatar.src = 'https://picsum.photos/40?random=' + Math.random();  
+        userAvatar.alt = 'User Avatar';
+        userAvatar.className = 'user-avatar';
+
+        const userName = document.createElement('p');
+        userName.className = 'user-name';
+        userName.textContent = post.name;
+
+        const postMessage = document.createElement('p');
+        postMessage.className = 'post-message';
+        postMessage.textContent = post.post;
+
+        const reactIcons = document.createElement('div');
+        reactIcons.className = 'react-icons';
+
+        const likeButton = document.createElement('button');
+        likeButton.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/000000/thumb-up.png" alt="Like Icon">';
+        likeButton.addEventListener('click', () => toggleLike(index));
+        reactIcons.appendChild(likeButton);
+
+        const likesCount = document.createElement('span');
+        likesCount.textContent = post.likes + ' Likes';
+        reactIcons.appendChild(likesCount);
+
+        // Append elements to postCard
+        userInfo.appendChild(userAvatar);
+        userInfo.appendChild(userName);
+        postCard.appendChild(userInfo);
+        postCard.appendChild(postMessage);
+        postCard.appendChild(reactIcons);
+
+        return postCard;
+    }
+
+    // Function to render posts
+    function renderPosts(posts) {
+        const postContainer = document.getElementById('post-container');
+        posts.forEach((post, index) => {
+            const postElement = createPostElement(post, index);
+            postContainer.appendChild(postElement);
+        });
+    }
+
+    // Function to toggle like
+    function toggleLike(index) {
+        const post = posts[index];
+        post.isLiked = !post.isLiked;
+        post.likes += post.isLiked ? 1 : -1;
+        updateLikesUI(index);
+    }
+
+    // Function to update likes UI
+    function updateLikesUI(index) {
+        const post = posts[index];
+        const postElement = document.getElementById('post-container').children[index];
+        const likesCount = postElement.querySelector('.react-icons span');
+        likesCount.textContent = post.likes + ' Likes';
+    }
+
+    // Render initial posts
+    renderPosts(posts);
+
+    document.getElementById('post-button').addEventListener('click', function () {
+        alert("Maaf jess belum bisa post hahaha!");
+    });
+</script>
+
+</body>
+</html>
